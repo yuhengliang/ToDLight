@@ -25,17 +25,15 @@ class App {
             this.dsl += indent + '"' + node.textContent + '"\n'
         } else {
             this.dsl += indent + node.nodeName.toLowerCase() + '()\n'
-            if(node.attributes.length){
-                for (let i = 0; i < node.attributes.length; i++)
-                {
+            if (node.attributes.length) {
+                for (let i = 0; i < node.attributes.length; i++) {
                     this.dsl += indent + '.' + node.attributes[i].name + '("' + node.attributes[i].value + '")\n'
                 }
             }
         }
         if (node.hasChildNodes()) {
             this.dsl += indent + '{\n'
-            for (let i = 0; i < node.childNodes.length; i++)
-            {
+            for (let i = 0; i < node.childNodes.length; i++) {
                 this.traverse(node.childNodes[i], level + 1)
             }
             this.dsl += indent + '}\n'
@@ -45,10 +43,20 @@ class App {
     Body() {
         div().class('min-h-screen flex flex-col')
         {
-            div().class('text-center p-5')
+            div().class('text-center p-5 space-y-2')
             {
                 h1('ToDLight').class('text-5xl')
-                p('Convert HTML(XML or SVG) to DLight DSL').class('text-sm')
+                p().class('text-sm text-center space-x-2')
+                {
+                    span('Convert HTML(XML or SVG) to DLight DSL')
+                    a()
+                        .href('https://www.github.com/yuhengliang/ToDLight')
+                        .target('_black')
+                    {
+                        img().class('inline')
+                            .src('https://img.shields.io/github/stars/yuhengliang/ToDLight?logo=github')
+                    }
+                }
             }
             div().class('grow flex space-x-5 p-5')
             {

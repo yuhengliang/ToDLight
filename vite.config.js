@@ -13,5 +13,7 @@ export default defineConfig({
 
     plugins: [
         dlight({ files: "**/*.{view,model}.js" })
-    ]
+    ],
+
+    base: './'
 });
